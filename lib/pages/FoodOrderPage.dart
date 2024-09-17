@@ -95,13 +95,3 @@ class _FoodOrderPageState extends State<FoodOrderPage> {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-

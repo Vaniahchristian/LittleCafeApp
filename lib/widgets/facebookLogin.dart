@@ -1,7 +1,6 @@
 
 
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -34,7 +33,7 @@ class FacebookGoogleLogin extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(left: 15.0, right: 15.0),
                     child: Text(
-                      "Or",
+                      "Or Continue with",
                       style: TextStyle(
                           color: Color(0xFF2c2b2b),
                           fontSize: 16.0,

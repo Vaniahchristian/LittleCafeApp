@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 
 // Import your respective pages
 import '../animation/ScaleRoute.dart';
@@ -7,8 +7,6 @@ import '../pages/Favoritespage.dart';
 import '../pages/HomePage.dart';
 import '../pages/Mainmenu.dart';
 import '../pages/Offerspage.dart';
-
-
 
 class BottomNavBarWidget extends StatefulWidget {
   @override
@@ -30,9 +28,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
     setState(() {
       _selectedIndex = index;
     });
-    Navigator.push(
-      context, ScaleRoute(page:_pages[index])
-    );
+    Navigator.push(context, ScaleRoute(page: _pages[index]));
   }
 
   @override

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:saturday/pages/resetPassword.dart';
+import 'package:littlecafe/pages/resetPassword.dart';
 import '../animation/ScaleRoute.dart';
+import '../services/auth/auth_service.dart';
 import '../widgets/SignInButton.dart';
-import '../widgets/facebookLogin.dart';
+import '../widgets/Squaretile.dart';
 import 'SignUpPage.dart';
 
 class SignInPage extends StatefulWidget {
@@ -12,6 +12,50 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
+  // Controllers for text fields
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  //LOGIN METHOD
+
+  void login() async {
+    //get instance of auth service
+
+    final _authService = AuthService();
+
+    //try sign in
+    try{
+       await _authService.signInWithEmailPassword(emailController.text, passwordController.text);
+    }
+
+    //display any errors
+
+
+    catch(e){
+      showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text(e.toString()),
+
+          )
+      );
+
+
+    }
+
+
+  }
+
+
+
+  @override
+  void dispose() {
+    // Dispose controllers to free resources
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     String defaultFontFamily = 'Roboto-Light.ttf';
@@ -19,12 +63,8 @@ class _SignInPageState extends State<SignInPage> {
     double defaultIconSize = 17;
 
     return Scaffold(
-      body: SingleChildScrollView(  // Added SingleChildScrollView
-        child: Container(
-          padding: EdgeInsets.only(left: 20, right: 20, top: 35, bottom: 30),
-          width: double.infinity,
-          height: MediaQuery.of(context).size.height,  // Adjusted height to fit the screen size
-          color: Colors.white70,
+      body: SafeArea(
+        child: Center(
           child: Column(
             children: <Widget>[
               Flexible(
@@ -55,84 +95,92 @@ class _SignInPageState extends State<SignInPage> {
                           height: 800, // Set the desired height
                           child: Image.asset(
                             "assets/images/menus/logo.png",
-                            fit: BoxFit.contain, // Adjust this as needed (BoxFit.cover, BoxFit.fitWidth, etc.)
+                            fit: BoxFit.contain,
                           ),
                         ),
                       ),
                     ),
-
-                    SizedBox(
-                      height: 15,
-                    ),
-                    TextField(
-                      showCursor: true,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(
-                            width: 0,
-                            style: BorderStyle.none,
+                    SizedBox(height: 15),
+                    // Email TextField
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 13.0),
+                      child: TextField(
+                        controller: emailController,  // Attach controller
+                        showCursor: true,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                            borderSide: BorderSide(
+                              width: 0,
+                              style: BorderStyle.none,
+                            ),
                           ),
-                        ),
-                        filled: true,
-                        prefixIcon: Icon(
-                          Icons.phone,
-                          color: Color(0xFF666666),
-                          size: defaultIconSize,
-                        ),
-                        fillColor: Color(0xFFF2F3F5),
-                        hintStyle: TextStyle(
+                          filled: true,
+                          prefixIcon: Icon(
+                            Icons.email,
+                            color: Color(0xFF666666),
+                            size: defaultIconSize,
+                          ),
+                          fillColor: Color(0xFFF2F3F5),
+                          hintStyle: TextStyle(
                             color: Color(0xFF666666),
                             fontFamily: defaultFontFamily,
-                            fontSize: defaultFontSize),
-                        hintText: "Phone Number",
-                      ),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    TextField(
-                      showCursor: true,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          borderSide: BorderSide(
-                            width: 0,
-                            style: BorderStyle.none,
+                            fontSize: defaultFontSize,
                           ),
+                          hintText: "Email",
                         ),
-                        filled: true,
-                        prefixIcon: Icon(
-                          Icons.lock_outline,
-                          color: Color(0xFF666666),
-                          size: defaultIconSize,
-                        ),
-                        suffixIcon: Icon(
-                          Icons.remove_red_eye,
-                          color: Color(0xFF666666),
-                          size: defaultIconSize,
-                        ),
-                        fillColor: Color(0xFFF2F3F5),
-                        hintStyle: TextStyle(
-                          color: Color(0xFF666666),
-                          fontFamily: defaultFontFamily,
-                          fontSize: defaultFontSize,
-                        ),
-                        hintText: "Password",
                       ),
                     ),
-                    SizedBox(
-                      height: 15,
+                    SizedBox(height: 15),
+                    // Password TextField
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 13.0),
+                      child: TextField(
+                        controller: passwordController,  // Attach controller
+                        showCursor: true,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                            borderSide: BorderSide(
+                              width: 0,
+                              style: BorderStyle.none,
+                            ),
+                          ),
+                          filled: true,
+                          prefixIcon: Icon(
+                            Icons.lock_outline,
+                            color: Color(0xFF666666),
+                            size: defaultIconSize,
+                          ),
+                          suffixIcon: Icon(
+                            Icons.remove_red_eye,
+                            color: Color(0xFF666666),
+                            size: defaultIconSize,
+                          ),
+                          fillColor: Color(0xFFF2F3F5),
+                          hintStyle: TextStyle(
+                            color: Color(0xFF666666),
+                            fontFamily: defaultFontFamily,
+                            fontSize: defaultFontSize,
+                          ),
+                          hintText: "Password",
+                        ),
+                      ),
                     ),
+                    SizedBox(height: 15),
+                    // Forgot password
                     InkWell(
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => ResetPasswordScreen()),
+                          MaterialPageRoute(
+                              builder: (context) => ResetPasswordScreen()),
                         );
                       },
                       child: Container(
                         width: double.infinity,
+                        padding: const EdgeInsets.symmetric(horizontal: 13.0),
                         child: Text(
                           "Forgot your password?",
                           style: TextStyle(
@@ -145,18 +193,52 @@ class _SignInPageState extends State<SignInPage> {
                         ),
                       ),
                     ),
-
-                    SizedBox(
-                      height: 15,
+                    SizedBox(height: 15),
+                    // Sign In Button
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 13.0),
+                      child: SignInButtonWidget(),
                     ),
-                    SignInButtonWidget(),
-                    SizedBox(
-                      height: 2,
+                    SizedBox(height: 30),
+                    // Divider and Social Login
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Divider(
+                              thickness: 0.5,
+                              color: Colors.grey[400],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                            child: Text('Or continue with',
+                                style: TextStyle(color: Colors.grey[700])),
+                          ),
+                          Expanded(
+                            child: Divider(
+                              thickness: 0.5,
+                              color: Colors.grey[400],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                    FacebookGoogleLogin()
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // Google login
+                        SquareTile(imagePath: 'assets/images/google.png'),
+                        const SizedBox(width: 10),
+                        // Apple login
+                        SquareTile(imagePath: 'assets/images/apple.png'),
+                      ],
+                    ),
                   ],
                 ),
               ),
+              // Sign Up link
               Flexible(
                 flex: 1,
                 child: Align(
@@ -165,29 +247,29 @@ class _SignInPageState extends State<SignInPage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Container(
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 20.0),
                         child: Text(
                           "Don't have an account? ",
                           style: TextStyle(
                             color: Color(0xFF666666),
                             fontFamily: defaultFontFamily,
                             fontSize: defaultFontSize,
-                            fontStyle: FontStyle.normal,
                           ),
                         ),
                       ),
                       InkWell(
-                        onTap: () => {
-                          Navigator.push(context, ScaleRoute(page: SignUpPage()))
+                        onTap: () {
+                          Navigator.push(context, ScaleRoute(page: SignUpPage()));
                         },
-                        child: Container(
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 20.0),
                           child: Text(
                             "Sign Up",
                             style: TextStyle(
-                              color: Color(0xFFFEBE10), // Full opacity
+                              color: Color(0xFFFEBE10),
                               fontFamily: defaultFontFamily,
                               fontSize: defaultFontSize,
-                              fontStyle: FontStyle.normal,
                             ),
                           ),
                         ),

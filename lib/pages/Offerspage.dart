@@ -51,35 +51,40 @@ class OffersPage extends StatelessWidget {
               SizedBox(height: 20),
               // Offers List
               OfferItem(
-                imageUrl: AssetImage('assets/images/popular_foods/ic_popular_food_1.png'),
+                imageUrl: AssetImage(
+                    'assets/images/popular_foods/ic_popular_food_1.png'),
                 title: 'Grilled Chicken Sandwich',
                 rating: 4.8,
                 reviews: 154,
                 category: 'Sandwiches',
               ),
               OfferItem(
-                imageUrl: AssetImage('assets/images/popular_foods/ic_popular_food_2.png'),
+                imageUrl: AssetImage(
+                    'assets/images/popular_foods/ic_popular_food_2.png'),
                 title: 'Margarita Pizza',
                 rating: 4.7,
                 reviews: 230,
                 category: 'Pizza',
               ),
               OfferItem(
-                imageUrl: AssetImage('assets/images/popular_foods/ic_popular_food_3.png'),
+                imageUrl: AssetImage(
+                    'assets/images/popular_foods/ic_popular_food_3.png'),
                 title: 'Caesar Salad',
                 rating: 4.5,
                 reviews: 98,
                 category: 'Salads',
               ),
               OfferItem(
-                imageUrl: AssetImage('assets/images/popular_foods/ic_popular_food_4.png'),
+                imageUrl: AssetImage(
+                    'assets/images/popular_foods/ic_popular_food_4.png'),
                 title: 'Spaghetti Carbonara',
                 rating: 4.6,
                 reviews: 187,
                 category: 'Pasta',
               ),
               OfferItem(
-                imageUrl: AssetImage('assets/images/popular_foods/ic_popular_food_5.png'),
+                imageUrl: AssetImage(
+                    'assets/images/popular_foods/ic_popular_food_5.png'),
                 title: 'Chocolate Lava Cake',
                 rating: 4.9,
                 reviews: 320,

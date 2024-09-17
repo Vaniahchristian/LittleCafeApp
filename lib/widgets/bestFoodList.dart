@@ -1,8 +1,6 @@
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'BestFoodWidget.dart';
 class BestFoodTiles extends StatelessWidget {
   final String name;
   final String imageUrl;

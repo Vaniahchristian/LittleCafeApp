@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "140771179995",
+    "project_id": "littlecafe-2554c",
+    "storage_bucket": "littlecafe-2554c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:140771179995:android:ddbddbb569a75b78543bfe",
+        "android_client_info": {
+          "package_name": "com.example.littlecafe"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwA28uOkRa-GOI1sfNAusjLgOLh9okkKE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

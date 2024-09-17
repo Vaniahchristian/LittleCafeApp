@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:saturday/widgets/popularFoodList.dart';
+import 'package:littlecafe/widgets/popularFoodList.dart';
 
 class PopularFoodsWidget extends StatelessWidget {
   @override

@@ -7,7 +7,10 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile',style: TextStyle(color:Colors.white),),
+        title: Text(
+          'Profile',
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Color(0xFF0a2351),
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.white),
@@ -71,11 +74,19 @@ class ProfilePage extends StatelessWidget {
               ),
               SizedBox(height: 20),
               _buildTextField(label: 'Name', initialValue: 'MontyD_Lemon'),
-              _buildTextField(label: 'Email', initialValue: 'MontyD_Lemon@email.com'),
-              _buildTextField(label: 'Mobile No', initialValue: 'MontyD_Lemon@email.com'),
+              _buildTextField(
+                  label: 'Email', initialValue: 'MontyD_Lemon@email.com'),
+              _buildTextField(
+                  label: 'Mobile No', initialValue: 'MontyD_Lemon@email.com'),
               //_buildTextField(label: 'Address', initialValue: 'No 23, 6th Lane, Colombo 03'),
-              _buildTextField(label: 'Password', initialValue: '********', obscureText: true),
-              _buildTextField(label: 'Confirm Password', initialValue: '********', obscureText: true),
+              _buildTextField(
+                  label: 'Password',
+                  initialValue: '********',
+                  obscureText: true),
+              _buildTextField(
+                  label: 'Confirm Password',
+                  initialValue: '********',
+                  obscureText: true),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
@@ -100,7 +111,10 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _buildTextField({required String label, required String initialValue, bool obscureText = false}) {
+  Widget _buildTextField(
+      {required String label,
+      required String initialValue,
+      bool obscureText = false}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextField(

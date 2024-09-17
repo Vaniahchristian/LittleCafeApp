@@ -11,7 +11,10 @@ class MenuPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         //backgroundColor:Color(0xFF0a2351),
-        title: Text('Menu', style:TextStyle(color:Colors.white),),
+        title: Text(
+          'Main Menu',
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Color(0xFF0a2351),
         elevation: 0,
         leading: IconButton(
@@ -38,36 +41,38 @@ class MenuPage extends StatelessWidget {
                     title: 'Burger',
                     subtitle: '120 Items',
                     imageUrl: 'assets/images/topmenu/ic_burger.png',
+                    slug: 'burger',
                   ),
                   MenuItemCard(
                     title: 'Sushi',
                     subtitle: '220 Items',
                     imageUrl: 'assets/images/topmenu/ic_sushi.png',
+                    slug: 'sushi',
                   ),
                   MenuItemCard(
                     title: 'Pizza',
                     subtitle: '155 Items',
                     imageUrl: 'assets/images/topmenu/ic_pizza.png',
+                    slug: 'pizza',
                   ),
                   MenuItemCard(
                     title: 'Cake',
                     subtitle: '25 Items',
                     imageUrl: 'assets/images/topmenu/ic_cake.png',
+                    slug: 'cake',
                   ),
                   MenuItemCard(
                     title: 'Ice Cream',
                     subtitle: '25 Items',
                     imageUrl: 'assets/images/topmenu/ic_ice_cream.png',
+                    slug: 'ice_cream',
                   ),
-
                   MenuItemCard(
                     title: 'Soft Drink ',
                     subtitle: '25 Items',
                     imageUrl: 'assets/images/topmenu/ic_soft_drink.png',
+                    slug: 'soft_drink',
                   ),
-
-
-
                 ],
               ),
             ),
@@ -78,6 +83,3 @@ class MenuPage extends StatelessWidget {
     );
   }
 }
-
-
-

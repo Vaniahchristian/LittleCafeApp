@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../animation/ScaleRoute.dart';
 import '../widgets/addToCart.dart';
 import '../widgets/bottomMenu.dart';
 import '../widgets/cartIcon.dart';
 import '../widgets/detailContent.dart';
 import '../widgets/foodTitle.dart';
-import 'FoodOrderPage.dart';
 
 class FoodDetailsPage extends StatefulWidget {
   @override
@@ -31,7 +29,6 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
             onPressed: () => Navigator.of(context).pop(),
           ),
           systemOverlayStyle: SystemUiOverlayStyle.dark,
-
           actions: <Widget>[
             CartIconWithBadge(),
           ],
@@ -114,9 +111,3 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
     );
   }
 }
-
-
-
-
-
-

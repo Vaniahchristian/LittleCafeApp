@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class ResetPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -8,12 +7,11 @@ class ResetPasswordScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Color(0xFF0a2351),
         leading: IconButton(
-
           icon: Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context); // Go back to the previous screen
           },
-         color:Colors.white ,
+          color: Colors.white,
         ),
         //title: Text('Reset Password'),
         //centerTitle: true, // Center the title in the AppBar
@@ -21,9 +19,11 @@ class ResetPasswordScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center, // Aligns text to the center
+          crossAxisAlignment: CrossAxisAlignment.center,
+          // Aligns text to the center
           children: [
-            SizedBox(height: 60), // Adds space from the top
+            SizedBox(height: 60),
+            // Adds space from the top
             Text(
               'Reset Password',
               style: TextStyle(
@@ -31,7 +31,8 @@ class ResetPasswordScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 10), // Adds some space between the text and description
+            SizedBox(height: 10),
+            // Adds some space between the text and description
             Text(
               'Please enter your phone number to receive a link to create a new password via SMS',
               textAlign: TextAlign.start,
@@ -67,7 +68,7 @@ class ResetPasswordScreen extends StatelessWidget {
               ),
               child: Text(
                 'Send',
-                style: TextStyle(fontSize: 18,color: Colors.white),
+                style: TextStyle(fontSize: 18, color: Colors.white),
               ),
             ),
           ],

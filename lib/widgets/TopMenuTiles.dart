@@ -1,8 +1,11 @@
-
-
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../pages/BurgerPage.dart';
+import '../pages/CakePage.dart';
+import '../pages/IceCreamPage.dart';
+import '../pages/PizzaPage.dart';
+import '../pages/SoftDrinkPage.dart';
+import '../pages/SushiPage.dart';
 
 class TopMenuTiles extends StatelessWidget {
   final String name;
@@ -20,8 +23,41 @@ class TopMenuTiles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        if (slug == 'burger') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => BurgerPage()),
+          );
+        } else if (slug == 'sushi') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => SushiPage()),
+          );
+        } else if (slug == 'pizza') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => PizzaPage()),
+          );
+        } else if (slug == 'cake') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => CakePage()),
+          );
+        } else if (slug == 'ice_cream') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => IceCreamPage()),
+          );
+        } else if (slug == 'soft_drink') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => SoftDrinkPage()),
+          );
+        }
+      },
       child: Container(
         width: 80,
         margin: EdgeInsets.symmetric(horizontal: 5),
@@ -59,4 +95,5 @@ class TopMenuTiles extends StatelessWidget {
         ),
       ),
     );
-  }}
+  }
+}
