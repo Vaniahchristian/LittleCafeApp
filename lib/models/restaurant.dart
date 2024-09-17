@@ -321,14 +321,23 @@ class Restaurant extends ChangeNotifier {
     ),
   ];
 
+  //user cart
+  final List<CartItem> _cart = [];
+
+  // delivery address which user can manully edit or change
+
+  String _deliveryAddress = 'Makerere Kikoni ';
+
+
+
   // Getter to access the menu
   List<Food> get menu => _menu;
   List<CartItem> get cart => _cart;
+  String get deliveryAddress => _deliveryAddress;
 
   //operations
 
-  //user cart
-  final List<CartItem> _cart = [];
+
 
 //add to cart
 
@@ -414,6 +423,14 @@ class Restaurant extends ChangeNotifier {
     notifyListeners();
   }
 
+  //update delivery address
+  void updateDeliveryAddress(String newAddress){
+   _deliveryAddress = newAddress;
+   notifyListeners();
+
+
+  }
+
 // HELPERS
 
 //GENERATE A RECEIPT
@@ -430,6 +447,7 @@ class Restaurant extends ChangeNotifier {
     receipt.writeln(formattedDate);
     receipt.writeln();
     receipt.writeln("-----------");
+    receipt.writeln("Delivering to : $deliveryAddress");
 
     for (final cartItem in _cart){
       receipt.writeln( "${cartItem.quantity} * ${cartItem.food.name} - ${_formatPrice(cartItem.food.price)}");

@@ -1,7 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:littlecafe/models/restaurant.dart';
+import 'package:provider/provider.dart';
 
-class MyCurrentLocation extends StatelessWidget {
+class MyCurrentLocation extends StatefulWidget {
   const MyCurrentLocation({super.key});
+
+  @override
+  _MyCurrentLocationState createState() => _MyCurrentLocationState();
+}
+
+class _MyCurrentLocationState extends State<MyCurrentLocation> {
+  final TextEditingController textController = TextEditingController();
+
+  @override
+  void dispose() {
+    textController.dispose();
+    super.dispose();
+  }
 
   void openLocationSearchBox(BuildContext context) {
     showDialog(
@@ -9,22 +24,29 @@ class MyCurrentLocation extends StatelessWidget {
       builder: (context) => AlertDialog(
         title: Text('Your location'),
         content: TextField(
-          decoration: InputDecoration(hintText: "Search address .."),
+          controller: textController,
+          decoration: InputDecoration(hintText: "Enter address .."),
         ),
         actions: [
-          //cancel button
-
+          // Cancel button
           MaterialButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () {
+              Navigator.pop(context);
+              textController.clear();
+            },
             child: const Text("Cancel"),
           ),
-
+          // Save button
           MaterialButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () {
+              // Update delivery address
+              String newAddress = textController.text;
+              context.read<Restaurant>().updateDeliveryAddress(newAddress);
+              Navigator.pop(context);
+              textController.clear();
+            },
             child: const Text("Save"),
           ),
-
-          //save button
         ],
       ),
     );
@@ -42,23 +64,26 @@ class MyCurrentLocation extends StatelessWidget {
             style: TextStyle(color: Theme.of(context).colorScheme.primary),
           ),
           GestureDetector(
-              onTap: () => openLocationSearchBox(context),
-              child: Row(
-                children: [
-                  // address
-                  Text(
-                    '6901 Hollywood blv',
+            onTap: () => openLocationSearchBox(context),
+            child: Row(
+              children: [
+                // Address
+                Consumer<Restaurant>(
+                  builder: (context, restaurant, child) => Text(
+                    restaurant.deliveryAddress,
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.inversePrimary,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-
-                  Icon(Icons.keyboard_arrow_down)
-
-                  //drop down menu
-                ],
-              )),
+                ),
+                Icon(
+                  Icons.keyboard_arrow_down,
+                  color: Theme.of(context).colorScheme.inversePrimary,
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

@@ -1,9 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../models/restaurant.dart';
-
 
 class MyReceipt extends StatelessWidget {
   const MyReceipt({super.key});
@@ -31,8 +29,7 @@ class MyReceipt extends StatelessWidget {
           SizedBox(
             height: 25,
           ),
-
-          Text("Estimated delivery time  is : 4:10 pm" )
+          //Text("Estimated delivery time  is : 4:10 pm")
         ]),
       ),
     );

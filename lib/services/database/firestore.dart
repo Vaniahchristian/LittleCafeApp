@@ -10,5 +10,22 @@ class FirestoreService {
 
 
 
-  //
+  //save order to db
+   Future<void> saveOrderToDatabase(String receipt) async {
+     await orders.add({
+       'date': DateTime.now(),
+       'order':receipt,
+
+       //add more fields as necessry
+
+
+
+
+     },
+     );
+
+
+
+   }
+
 }

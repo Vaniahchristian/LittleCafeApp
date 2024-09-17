@@ -24,29 +24,21 @@ class _SignInPageState extends State<SignInPage> {
     final _authService = AuthService();
 
     //try sign in
-    try{
-       await _authService.signInWithEmailPassword(emailController.text, passwordController.text);
+    try {
+      await _authService.signInWithEmailPassword(
+          emailController.text, passwordController.text);
     }
 
     //display any errors
 
-
-    catch(e){
+    catch (e) {
       showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: Text(e.toString()),
-
-          )
-      );
-
-
+                title: Text(e.toString()),
+              ));
     }
-
-
   }
-
-
 
   @override
   void dispose() {
@@ -105,11 +97,12 @@ class _SignInPageState extends State<SignInPage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 13.0),
                       child: TextField(
-                        controller: emailController,  // Attach controller
+                        controller: emailController, // Attach controller
                         showCursor: true,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10.0)),
                             borderSide: BorderSide(
                               width: 0,
                               style: BorderStyle.none,
@@ -136,12 +129,13 @@ class _SignInPageState extends State<SignInPage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 13.0),
                       child: TextField(
-                        controller: passwordController,  // Attach controller
+                        controller: passwordController, // Attach controller
                         showCursor: true,
                         obscureText: true,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10.0)),
                             borderSide: BorderSide(
                               width: 0,
                               style: BorderStyle.none,
@@ -212,7 +206,8 @@ class _SignInPageState extends State<SignInPage> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 10.0),
                             child: Text('Or continue with',
                                 style: TextStyle(color: Colors.grey[700])),
                           ),
@@ -260,7 +255,8 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.push(context, ScaleRoute(page: SignUpPage()));
+                          Navigator.push(
+                              context, ScaleRoute(page: SignUpPage()));
                         },
                         child: Padding(
                           padding: const EdgeInsets.only(bottom: 20.0),

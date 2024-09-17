@@ -22,9 +22,9 @@ class MyCartTile extends StatelessWidget {
         builder: (context,restaurant,child) => Container(
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.secondary,
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(10),
           ),
-      margin: EdgeInsets.only(left: 10),
+      margin: EdgeInsets.all( 15),
       child: Column(
         children: [
           Padding(
@@ -59,26 +59,30 @@ class MyCartTile extends StatelessWidget {
                     style: TextStyle(color: Theme.of(context).colorScheme.primary,),
                     ),
 
+                    SizedBox(height: 10,),
+
+                    QuantitySelector(
+                      quantity: cartItem.quantity,
+                      food: cartItem.food,
+                      onDecrement: (){
+                        restaurant.removeFromCart(cartItem);
+
+                      },
+                      onIncrement: (){
+
+                        restaurant.addToCart(cartItem.food, cartItem.selectedAddons);
+                      },
+
+                    )
+
                   ],
 
                 ),
 
-                Spacer(),
+
 
                 //increment or decrement quantity
-                QuantitySelector(
-                    quantity: cartItem.quantity,
-                    food: cartItem.food,
-                    onDecrement: (){
-                      restaurant.removeFromCart(cartItem);
 
-                    },
-                    onIncrement: (){
-
-                      restaurant.addToCart(cartItem.food, cartItem.selectedAddons);
-                    },
-
-                )
 
               ],
 

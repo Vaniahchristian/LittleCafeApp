@@ -1,14 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:littlecafe/services/database/firestore.dart';
 import 'package:littlecafe/widgets/my_receipt.dart';
+import 'package:provider/provider.dart';
+import '../models/restaurant.dart';
 
-class DeliveryProgressPage extends StatelessWidget {
+class DeliveryProgressPage extends StatefulWidget {
   const DeliveryProgressPage({super.key});
 
+  @override
+  State<DeliveryProgressPage> createState() => _DeliveryProgressPageState();
+}
+
+class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
+
+  //get access to db
+  FirestoreService db = FirestoreService();
+
+
+
+  @override
+  void initState() {
+
+    super.initState();
+
+    //if we get to this page , we submit order to the firestore db
+
+    String receipt = context.read<Restaurant>().displayCartReceipt();
+    db.saveOrderToDatabase(receipt);
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Delivery  in Progress...."),
+
         backgroundColor: Colors.transparent,
       ),
       bottomNavigationBar: _buildBottomNavBar(context),
@@ -21,7 +46,6 @@ class DeliveryProgressPage extends StatelessWidget {
   }
 
   //Custom Bottom Nav Bar-Message or call delivery driver
-
   Widget _buildBottomNavBar(BuildContext context) {
     return Container(
       height: 100,
@@ -32,7 +56,7 @@ class DeliveryProgressPage extends StatelessWidget {
             topRight: Radius.circular(40),
           )
       ),
-      
+
       padding: EdgeInsets.all(25),
       child: Row(
 
@@ -51,11 +75,11 @@ class DeliveryProgressPage extends StatelessWidget {
           ),
 
           // driver details
-          
+
           Column(
             crossAxisAlignment:CrossAxisAlignment.start,
             children: [
-              
+
               Text("MUKISA VANIAH",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -70,11 +94,11 @@ class DeliveryProgressPage extends StatelessWidget {
                 ),
               )
 
-              
-              
+
+
             ],
-            
-            
+
+
           ),
 
           Spacer(),
